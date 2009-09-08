@@ -1,0 +1,98 @@
+---
+title:      Introduction to the Adobe Flex 4.0 Framework
+created_at: 2008-05-18 22:10:21.995012 -06:00
+author:     Jed Schneider
+company:    Red Bone Code Hounds
+copyright:  Jed Schneider, 2009
+filter:
+  - erb
+  - textile
+  - slides
+layout: presentation
+---
+
+h1. Columbia Adobe Users Group
+
+h2. Introduction to Flex 4.0
+
+<img src="images/flex4.png"  width="260" height="260" alt="Flex4">
+
+h1. Resources
+
+<%= render :partial => 'resources' %>
+
+h1. Overview
+
+Two Main Topics:
+
+* data delivery to the app via XML
+* overview of component skinning
+
+but first we need a three slide intro to Flex
+
+h1. What is Flex
+
+* Flex is an opensource web application framework.
+* Flex is a rapidly typed mark-up language to abstract and express _actionscript_
+* MXML (macromedia XML) is the markup language with a syntax similar to XHTML, HTML, XML
+* it is used in conjunction with actionscript to add 'action' to the application
+
+h1. Flex Code Example
+
+A short snippet of code, for demonstration
+
+<%= render :partial => 'button.mxml', :guard => true %>
+
+
+h1. Hello World Button Example Application
+
+But really, here's all the code we'd need to compile that snippet
+
+<%= render :partial => 'helloWorldApp', :guard => true %>
+
+h1. Bringing Data Into Flex
+
+A complaint of most 'developers' is that actionscript is somewhat inaccessible for manipulating web services, mashing-up data, or otherwise "dynamically" creating content in Flash.
+
+Instead of re-hashing a RESTful example using the Twitter API, I though I'd try to do something a little different.
+
+h1. The Swine Flu Tracker Application
+
+_Rhizalabs_ has created a google maps interface for tracking the "swine flu":http://flutracker.rhizalabs.com/
+
+* The data is under Creative Commons license
+* *"The map is compiled using data from official sources, news reports and user-contributions and updated multiple times per day."* (but I couldn't find the references to official sources)
+* no publicly accessible API that I could find, nor was there another API from the WHO or CDC or other such source
+* I wanted to look at the data differently, so I clobbered together my own crude API
+
+h1. The Rails Side, part 1
+
+* I created a rails application that basically scrapes the JSON data used for the FluTracker map
+* Briefly, it required: 
+** finding by trial the folder on their server containing the data
+** using Hpricot to parse the html and get only the relevant JSON files
+** parsing the JSON to local data models in the rails app
+** pushing the data into a mySQL database locally
+** loading new data when it becomes available
+
+h1. The Rails Side, part 2
+
+* Used Rails built-in methods for creating XML objects: one of the coolest features of Rails, in my opinion. 
+
+<%= render :partial => 'respond-to', :guard => true %>
+
+pause for demo
+
+h1. The Flex Side
+
+
+h1. Create a Service Call
+
+
+h1. Create a ResultEvent
+
+
+h1. Use custom objects
+
+
+h1. Visualize the Data

@@ -1,0 +1,18 @@
+---
+filter: erb
+---
+<% uv :lang => 'actionscript', :line_numbers => true, :theme => 'twilight' do -%>
+<!-- here is a button marked up in mxml -->
+<s:Button 
+	label="Hello World" 
+	click="{Alert.show('hello world')}" 
+	added="doHelloWorldAdded(event)" 
+	styleName="helloWorldBtn"
+	/>
+<% end -%>
+
+and, thats pretty much it!
+
+* click => can add inline actionscript inside braces
+* added => can refer to a function elsewhere in the file or application
+* styleName => can use CSS to markup components

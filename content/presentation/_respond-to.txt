@@ -1,0 +1,14 @@
+---
+filter: erb
+---
+<% uv :lang => 'ruby', :line_numbers => false, :theme => 'twilight' do -%>
+# a basic controller method
+#
+def show
+ @report = FluReport.find_by_id(params[:id])
+ respond_to do |format|
+  format.html
+  format.xml {render :xml => @report}
+ end
+end
+<% end -%>

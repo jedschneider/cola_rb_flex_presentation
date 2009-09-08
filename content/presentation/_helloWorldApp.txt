@@ -1,0 +1,25 @@
+---
+filter: erb
+---
+<% uv :lang => 'actionscript', :line_numbers => true, :theme => 'twilight' do -%>
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/halo" 
+	minWidth="1024" minHeight="768">
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			
+			public function doHelloWorldAdded(event:Event):void
+			{
+				Alert.show("Button added to the stage");
+			}
+		]]>
+	</fx:Script>
+	<s:Button label="Hello World" click="{Alert.show('hello world')}" 
+		added="doHelloWorldAdded(event)" styleName="helloWorldBtn"/>
+</s:Application>
+
+<% end -%>
