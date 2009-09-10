@@ -1,0 +1,24 @@
+---
+filter: erb
+---
+<% uv :lang => 'actionscript', :line_numbers => true, :theme => 'twilight' do -%>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+  xmlns:s="library://ns.adobe.com/flex/spark" 
+  xmlns:mx="library://ns.adobe.com/flex/halo" 
+  minWidth="1024" minHeight="768"
+  creationComplete="{flu_reports.send()}">
+
+  <fx:Script>
+    <![CDATA[
+    import mx.rpc.events.ResultEvent;
+    import mx.controls.Alert;
+
+    private function handleFluReports(event:ResultEvent):void
+    {
+      var xml:XML = new XML();
+      xml = event.result as XML;
+      Alert.show("There are " + xml.children().length() + " flu reports");
+    }
+    ]]>
+  </fx:Script>	
+<% end -%>

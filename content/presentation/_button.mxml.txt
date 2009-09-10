@@ -11,8 +11,3 @@ filter: erb
 	/>
 <% end -%>
 
-and, thats pretty much it!
-
-* click => can add inline actionscript inside braces
-* added => can refer to a function elsewhere in the file or application
-* styleName => can use CSS to markup components

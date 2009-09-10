@@ -3,7 +3,7 @@ title:      Introduction to the Adobe Flex 4.0 Framework
 created_at: 2008-05-18 22:10:21.995012 -06:00
 author:     Jed Schneider
 company:    Red Bone Code Hounds
-copyright:  Jed Schneider, 2009
+copyright:  Use it but don't abuse it
 filter:
   - erb
   - textile
@@ -17,6 +17,14 @@ h2. Introduction to Flex 4.0
 
 <img src="images/flex4.png"  width="260" height="260" alt="Flex4">
 
+h1. About Me
+
+h3. _"Hallo, ik bent Jed Schneider"_
+
+* 1.5 years experience with the Flex Framework
+* 1 year of experience using Rails and Ruby
+* web development for two years, design, marketing and content management for 10 years. 
+
 h1. Resources
 
 <%= render :partial => 'resources' %>
@@ -26,16 +34,38 @@ h1. Overview
 Two Main Topics:
 
 * data delivery to the app via XML
-* overview of component skinning
+* -overview of component skinning-
 
-but first we need a three slide intro to Flex
+...but first we need a short intro to Flex
+
+h1. Why Flex
+
+Not a substitution for HTML and javascript, but to augment it.
+
+* A data visualization tool
+* An application like interface
+* tools for multimedia (video streaming, image manipulation)
+* 3D rendering, interaction with built in mic and webcam
+* GIS (Geographic Information Systems) Server integration with ESRI products
+
+Sites/Apps I've seen lately using Flex: Turbotax, Jing, scraplog.com, Delta airlines, Federal Reserve... and of course YouTube, Vimeo
+
+h1. More Reasons?...
+
+* robust object oriented language
+* consistent deployment
+* Desktop Runtime (AIR)
+* shake hands with existing (aka, _legacy_) backend solutions: _'hi Java, I'm Flex'_
+* integrated testing @Flex:Unit@ framework (in Flash Builder)
+
+*Take home:* when use cases call for data visualizations, or legacy systems need a new look, Flex might be a good solution.
 
 h1. What is Flex
 
 * Flex is an opensource web application framework.
-* Flex is a rapidly typed mark-up language to abstract and express _actionscript_
-* MXML (macromedia XML) is the markup language with a syntax similar to XHTML, HTML, XML
-* it is used in conjunction with actionscript to add 'action' to the application
+* Flex is a rapidly typed mark-up language to abstract and express _actionscript 3.0_
+* MXML (macromedia XML) is the markup language with a syntax similar to XHTML
+* it is used in conjunction with actionscript: Flex ads the bones, AS adds the 'action'
 
 h1. Flex Code Example
 
@@ -43,8 +73,13 @@ A short snippet of code, for demonstration
 
 <%= render :partial => 'button.mxml', :guard => true %>
 
+and, thats pretty much it!
 
-h1. Hello World Button Example Application
+* click => can add inline actionscript inside braces
+* added => can refer to a function elsewhere in the file or application
+* styleName => can use CSS to markup components
+
+h1. Example Application
 
 But really, here's all the code we'd need to compile that snippet
 
@@ -52,15 +87,21 @@ But really, here's all the code we'd need to compile that snippet
 
 h1. Bringing Data Into Flex
 
-A complaint of most 'developers' is that actionscript is somewhat inaccessible for manipulating web services, mashing-up data, or otherwise "dynamically" creating content in Flash.
+h3. Complaint: Flash content is not dynamic (in regards to content)
 
-Instead of re-hashing a RESTful example using the Twitter API, I though I'd try to do something a little different.
+* Flex was created, in part, to provide easy access to dynamic content
+* Out of the box:
+** connect to ColdFusion, ASP.net, J2EE, PHP, application servers
+** connect to HTTP API's and RESTful resources
+** serialize data objects with AMF => RubyAMF, PHPAMF
+** access databases directly; Flash Builder wizard creates CRUD tasks for you
+* External libraries provide a range of other options, like consuming serialized JSON
 
 h1. The Swine Flu Tracker Application
 
 _Rhizalabs_ has created a google maps interface for tracking the "swine flu":http://flutracker.rhizalabs.com/
 
-* The data is under Creative Commons license
+* The data is under "Creative Commons license":http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 * *"The map is compiled using data from official sources, news reports and user-contributions and updated multiple times per day."* (but I couldn't find the references to official sources)
 * no publicly accessible API that I could find, nor was there another API from the WHO or CDC or other such source
 * I wanted to look at the data differently, so I clobbered together my own crude API
@@ -69,30 +110,93 @@ h1. The Rails Side, part 1
 
 * I created a rails application that basically scrapes the JSON data used for the FluTracker map
 * Briefly, it required: 
-** finding by trial the folder on their server containing the data
-** using Hpricot to parse the html and get only the relevant JSON files
+** finding, by trial, the folder on their server containing the data
+** using Hpricot (an HTML parser in Ruby) to parse the html and get only the relevant JSON files
 ** parsing the JSON to local data models in the rails app
 ** pushing the data into a mySQL database locally
 ** loading new data when it becomes available
 
 h1. The Rails Side, part 2
 
-* Used Rails built-in methods for creating XML objects: one of the coolest features of Rails, in my opinion. 
+Rails has built-in methods for creating XML objects: _one of the coolest features of Rails, in my opinion._ 
 
 <%= render :partial => 'respond-to', :guard => true %>
+"rails app":http://localhost:3000, "an example flu report in html":http://localhost:3000/flu_report/2, "an example flu report in xml":http://localhost:3000/flu_report/2.xml
 
-pause for demo
+as web developers, shouldn't we be 'responding to' what the client is asking for? This is a good model for web application development. We could also: @format.pdf@, @format.amf@, @format.json@
 
 h1. The Flex Side
 
+h3. The game plan
 
-h1. Create a Service Call
+* Make a call to the web service
+* handle the data returned
+* display the data in a new way
 
+h1. Create a New Project
 
-h1. Create a ResultEvent
+Flash Builder Wizard
 
+* Select server technology
+* flex or air app
+* remote object access, if needed
+
+Follow Along: @git checkout -f 81f734@
+
+h1. Create a Service Call & Result
+
+The HTTPService Object
+
+Follow Along: @git checkout -f 40323f@
+
+New to Flex 4, declarations must go in a Declarations Block
+
+<%= render :partial => 'httpService', :guard => true %>
+
+h1. ResultEvent
+
+Result event must go inside a script block. Flex 4, script block now belongs to the fx, not the mx namespace.
+
+<%= render :partial => 'resultEventHandler', :guard => true %>
+
+h1. Initiate the HTTPService Request
+
+We can send the request by initiating the service call with the Application's @creationComplete@ event, which dispatches once all the components are created.
+
+<%= render :partial => 'sendServiceCall', :guard => true %>
+
+Here I did it with inline actionscript, we'll fix this later
+@creationComplete = "{flu_reports.send()}"@
 
 h1. Use custom objects
 
+You can use the data straight from the ResultEvent, but...
+
+* it is probably better to assure that you are parsing the XML into primitive types, and objects. 
+** @"1" + "1" == "11"@
+** @1 + 1 == 2@
+* you will run into particular trouble sorting dates, for example
+
+Follow Along: @git checkout -f 2c90ad@
+
+*Take away point:* Flex likes objects
+
+h1. Revisit the ResultEvent
+
+Refactor to a Manager Method,
+
+<%= render :partial => 'resultEventRedux', :guard => true %>
+
+And Make use of data binding: 
+@[Bindable] arrayCollection:ArrayCollection@
 
 h1. Visualize the Data
+
+<%= render :partial=> 'columnChart', :guard => true %>
+
+Note that the ColumnChart is bound to the arrayCollection: @dataProvider="{arrayCollection}"@, changes to the arrayCollection are dispatched to the chart
+
+h1. Resources
+
+<%= render :partial => 'resources' %>
+

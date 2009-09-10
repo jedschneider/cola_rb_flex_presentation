@@ -3,7 +3,7 @@ filter: erb
 ---
 <% uv :lang => 'ruby', :line_numbers => false, :theme => 'twilight' do -%>
 # a basic controller method
-#
+# HTTP GET flu_report/1
 def show
  @report = FluReport.find_by_id(params[:id])
  respond_to do |format|

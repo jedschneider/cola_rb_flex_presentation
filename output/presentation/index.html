@@ -26,7 +26,7 @@
   <div id="currentSlide"><!-- DO NOT EDIT --></div>
   <div id="header"></div>
   <div id="footer">
-    <h2>Copyright &copy; Jed Schneider, 2009</h2>
+    <h2>Copyright &copy; Use it but don't abuse it</h2>
   </div>
 </div>
 
@@ -38,14 +38,24 @@
 </div>
 
 <div class="slide">
+<h1>About Me</h1>
+<h3><em>&#8220;Hallo, ik bent Jed Schneider&#8221;</em></h3>
+<ul>
+	<li>1.5 years experience with the Flex Framework</li>
+	<li>1 year of experience using Rails and Ruby</li>
+	<li>web development for two years, design, marketing and content management for 10 years.</li>
+</ul>
+</div>
+
+<div class="slide">
 <h1>Resources</h1>
-<p>sample code and slides for this presentation <a href="http://www.github.com/jedschneider">github.com/jedschneider</a></p>
-<p>Adobe Open Source Community  <a href="http://opensource.adobe.com">http://opensource.adobe.com</a><br />
+<p>sample code and slides <a href="http://www.github.com/jedschneider">github.com/jedschneider</a><br />
+twitter <a href="http://www.twitter.com/jedschneider">twitter.com/jedschneider</a><br />
+email <a href="mailto:jed.schneider@gmail.com">jed.schneider@gmail.com</a></p>
+<p>Adobe Open Source <a href="http://opensource.adobe.com">http://opensource.adobe.com</a><br />
 Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a></p>
-<p>Presentation/Slideshow Generator<br />
-Webby <a href="http://webby.rubyforge.org">http://webby.rubyforge.org</a></p>
-<p>RhizaLabs<br />
-FluTracker <a href="http://flutracker.rhizalabs.com/">http://flutracker.rhizalabs.com/</a></p>
+<p>HTML/CSS Presentation Generator <a href="http://webby.rubyforge.org">http://webby.rubyforge.org</a></p>
+<p>FluTracker <a href="http://flutracker.rhizalabs.com/">http://flutracker.rhizalabs.com/</a></p>
 </div>
 
 <div class="slide">
@@ -53,18 +63,43 @@ FluTracker <a href="http://flutracker.rhizalabs.com/">http://flutracker.rhizalab
 <p>Two Main Topics:</p>
 <ul>
 	<li>data delivery to the app via XML</li>
-	<li>overview of component skinning</li>
+	<li><del>overview of component skinning</del></li>
 </ul>
-<p>but first we need a three slide intro to Flex</p>
+<p>&#8230;but first we need a short intro to Flex</p>
+</div>
+
+<div class="slide">
+<h1>Why Flex</h1>
+<p>Not a substitution for HTML and javascript, but to augment it.</p>
+<ul>
+	<li>A data visualization tool</li>
+	<li>An application like interface</li>
+	<li>tools for multimedia (video streaming, image manipulation)</li>
+	<li>3D rendering, interaction with built in mic and webcam</li>
+	<li>GIS (Geographic Information Systems) Server integration with ESRI products</li>
+</ul>
+<p>Sites/Apps I&#8217;ve seen lately using Flex: Turbotax, Jing, scraplog.com, Delta airlines, Federal Reserve&#8230; and of course YouTube, Vimeo</p>
+</div>
+
+<div class="slide">
+<h1>More Reasons?&#8230;</h1>
+<ul>
+	<li>robust object oriented language</li>
+	<li>consistent deployment</li>
+	<li>Desktop Runtime (AIR)</li>
+	<li>shake hands with existing (aka, <em>legacy</em>) backend solutions: <em>&#8216;hi Java, I&#8217;m Flex&#8217;</em></li>
+	<li>integrated testing <code>Flex:Unit</code> framework (in Flash Builder)</li>
+</ul>
+<p><strong>Take home:</strong> when use cases call for data visualizations, or legacy systems need a new look, Flex might be a good solution.</p>
 </div>
 
 <div class="slide">
 <h1>What is Flex</h1>
 <ul>
 	<li>Flex is an opensource web application framework.</li>
-	<li>Flex is a rapidly typed mark-up language to abstract and express <em>actionscript</em></li>
-	<li>MXML (macromedia XML) is the markup language with a syntax similar to XHTML, HTML, XML</li>
-	<li>it is used in conjunction with actionscript to add &#8216;action&#8217; to the application</li>
+	<li>Flex is a rapidly typed mark-up language to abstract and express <em>actionscript 3.0</em></li>
+	<li>MXML (macromedia XML) is the markup language with a syntax similar to XHTML</li>
+	<li>it is used in conjunction with actionscript: Flex ads the bones, AS adds the &#8216;action&#8217;</li>
 </ul>
 </div>
 
@@ -81,54 +116,62 @@ FluTracker <a href="http://flutracker.rhizalabs.com/">http://flutracker.rhizalab
 <span class="line-numbers">   7 </span> 	<span class="Keyword">/</span>&gt;
 </pre>
 </div>
-and, thats pretty much it!
 
-* click => can add inline actionscript inside braces
-* added => can refer to a function elsewhere in the file or application
-* styleName => can use CSS to markup components
-
+<p>and, thats pretty much it!</p>
+<ul>
+	<li>click =&gt; can add inline actionscript inside braces</li>
+	<li>added =&gt; can refer to a function elsewhere in the file or application</li>
+	<li>styleName =&gt; can use CSS to markup components</li>
+</ul>
 </div>
 
 <div class="slide">
-<h1>Hello World Button Example Application</h1>
+<h1>Example Application</h1>
 <p>But really, here&#8217;s all the code we&#8217;d need to compile that snippet</p>
 <div class="UltraViolet">
-<pre class="twilight"><span class="line-numbers">   1 </span> 
-<span class="line-numbers">   2 </span> &lt;<span class="Keyword">?</span>xml <span class="SupportFunction">version</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>1.0<span class="String">&quot;</span></span> encoding<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>utf-8<span class="String">&quot;</span></span><span class="Keyword">?</span>&gt;
-<span class="line-numbers">   3 </span> &lt;s<span class="Keyword">:</span><span class="Support">Application</span> xmlns<span class="Keyword">:</span>fx<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>http://ns.adobe.com/mxml/2009<span class="String">&quot;</span></span> 
-<span class="line-numbers">   4 </span> 	xmlns<span class="Keyword">:</span>s<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>library://ns.adobe.com/flex/spark<span class="String">&quot;</span></span> 
-<span class="line-numbers">   5 </span> 	xmlns<span class="Keyword">:</span>mx<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>library://ns.adobe.com/flex/halo<span class="String">&quot;</span></span> 
-<span class="line-numbers">   6 </span> 	minWidth<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>1024<span class="String">&quot;</span></span> minHeight<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>768<span class="String">&quot;</span></span>&gt;
-<span class="line-numbers">   7 </span> 	&lt;fx<span class="Keyword">:</span>Script&gt;
-<span class="line-numbers">   8 </span> 		&lt;<span class="Keyword">!</span>[CDATA[
-<span class="line-numbers">   9 </span> 			<span class="Keyword">import</span> mx.events.FlexEvent;
-<span class="line-numbers">  10 </span> 			<span class="Keyword">import</span> mx.controls.<span class="Support">Alert</span>;
-<span class="line-numbers">  11 </span> 			
-<span class="line-numbers">  12 </span> 			<span class="Keyword">public</span> <span class="Storage">function</span> <span class="Entity">doHelloWorldAdded</span>(<span class="Variable">event:Event</span>)<span class="Keyword">:</span><span class="SupportFunction">void</span>
-<span class="line-numbers">  13 </span> 			{
-<span class="line-numbers">  14 </span> 				<span class="Support">Alert</span>.<span class="SupportFunction">show</span>(<span class="String"><span class="String">&quot;</span>Button added to the stage<span class="String">&quot;</span></span>);
-<span class="line-numbers">  15 </span> 			}
-<span class="line-numbers">  16 </span> 		]]&gt;
-<span class="line-numbers">  17 </span> 	&lt;<span class="Keyword">/</span>fx<span class="Keyword">:</span>Script&gt;
-<span class="line-numbers">  18 </span> 	&lt;s<span class="Keyword">:</span><span class="Support">Button</span> <span class="SupportFunction">label</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>Hello World<span class="String">&quot;</span></span> <span class="SupportFunction">click</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>{Alert.show('hello world')}<span class="String">&quot;</span></span> 
-<span class="line-numbers">  19 </span> 		added<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>doHelloWorldAdded(event)<span class="String">&quot;</span></span> styleName<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>helloWorldBtn<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt;
-<span class="line-numbers">  20 </span> &lt;<span class="Keyword">/</span>s<span class="Keyword">:</span><span class="Support">Application</span>&gt;
-<span class="line-numbers">  21 </span> 
+<pre class="twilight"><span class="line-numbers">   1 </span> &lt;<span class="Keyword">?</span>xml <span class="SupportFunction">version</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>1.0<span class="String">&quot;</span></span> encoding<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>utf-8<span class="String">&quot;</span></span><span class="Keyword">?</span>&gt;
+<span class="line-numbers">   2 </span> &lt;s<span class="Keyword">:</span><span class="Support">Application</span> xmlns<span class="Keyword">:</span>fx<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>http://ns.adobe.com/mxml/2009<span class="String">&quot;</span></span> 
+<span class="line-numbers">   3 </span> 	xmlns<span class="Keyword">:</span>s<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>library://ns.adobe.com/flex/spark<span class="String">&quot;</span></span> 
+<span class="line-numbers">   4 </span> 	xmlns<span class="Keyword">:</span>mx<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>library://ns.adobe.com/flex/halo<span class="String">&quot;</span></span> 
+<span class="line-numbers">   5 </span> 	minWidth<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>1024<span class="String">&quot;</span></span> minHeight<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>768<span class="String">&quot;</span></span>&gt;
+<span class="line-numbers">   6 </span> 	&lt;fx<span class="Keyword">:</span>Script&gt;
+<span class="line-numbers">   7 </span> 		&lt;<span class="Keyword">!</span>[CDATA[
+<span class="line-numbers">   8 </span> 			<span class="Keyword">import</span> mx.controls.<span class="Support">Alert</span>;
+<span class="line-numbers">   9 </span> 			
+<span class="line-numbers">  10 </span> 			<span class="Keyword">public</span> <span class="Storage">function</span> <span class="Entity">doHelloWorldAdded</span>(<span class="Variable">event:Event</span>)<span class="Keyword">:</span><span class="SupportFunction">void</span>
+<span class="line-numbers">  11 </span> 			{
+<span class="line-numbers">  12 </span> 				<span class="Support">Alert</span>.<span class="SupportFunction">show</span>(<span class="String"><span class="String">&quot;</span>Button added to the stage<span class="String">&quot;</span></span>);
+<span class="line-numbers">  13 </span> 			}
+<span class="line-numbers">  14 </span> 		]]&gt;
+<span class="line-numbers">  15 </span> 	&lt;<span class="Keyword">/</span>fx<span class="Keyword">:</span>Script&gt;
+<span class="line-numbers">  16 </span> 	&lt;s<span class="Keyword">:</span><span class="Support">Button</span> <span class="SupportFunction">label</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>Hello World<span class="String">&quot;</span></span> <span class="SupportFunction">click</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>{Alert.show('hello world')}<span class="String">&quot;</span></span> 
+<span class="line-numbers">  17 </span> 		added<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>doHelloWorldAdded(event)<span class="String">&quot;</span></span> styleName<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>helloWorldBtn<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt;
+<span class="line-numbers">  18 </span> &lt;<span class="Keyword">/</span>s<span class="Keyword">:</span><span class="Support">Application</span>&gt;
 </pre>
 </div>
 </div>
 
 <div class="slide">
 <h1>Bringing Data Into Flex</h1>
-<p>A complaint of most &#8216;developers&#8217; is that actionscript is somewhat inaccessible for manipulating web services, mashing-up data, or otherwise &#8220;dynamically&#8221; creating content in Flash.</p>
-<p>Instead of re-hashing a RESTful example using the Twitter API, I though I&#8217;d try to do something a little different.</p>
+<h3>Complaint: Flash content is not dynamic (in regards to content)</h3>
+<ul>
+	<li>Flex was created, in part, to provide easy access to dynamic content</li>
+	<li>Out of the box:
+	<ul>
+		<li>connect to ColdFusion, ASP.net, J2EE, PHP, application servers</li>
+		<li>connect to HTTP API&#8217;s and RESTful resources</li>
+		<li>serialize data obejcts with AMF =&gt; RubyAMF, PHPAMF</li>
+		<li>access databases directly; Flash Builder wizard creates CRUD tasks for you</li>
+	</ul></li>
+	<li>External libraries provide a range of other options, like consuming serialized JSON</li>
+</ul>
 </div>
 
 <div class="slide">
 <h1>The Swine Flu Tracker Application</h1>
 <p><em>Rhizalabs</em> has created a google maps interface for tracking the <a href="http://flutracker.rhizalabs.com/">swine flu</a></p>
 <ul>
-	<li>The data is under Creative Commons license</li>
+	<li>The data is under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons license</a></li>
 	<li><strong>&#8220;The map is compiled using data from official sources, news reports and user-contributions and updated multiple times per day.&#8221;</strong> (but I couldn&#8217;t find the references to official sources)</li>
 	<li>no publicly accessible API that I could find, nor was there another API from the WHO or CDC or other such source</li>
 	<li>I wanted to look at the data differently, so I clobbered together my own crude API</li>
@@ -141,8 +184,8 @@ and, thats pretty much it!
 	<li>I created a rails application that basically scrapes the JSON data used for the FluTracker map</li>
 	<li>Briefly, it required:
 	<ul>
-		<li>finding by trial the folder on their server containing the data</li>
-		<li>using Hpricot to parse the html and get only the relevant JSON files</li>
+		<li>finding, by trial, the folder on their server containing the data</li>
+		<li>using Hpricot (an HTML parser in Ruby) to parse the html and get only the relevant JSON files</li>
 		<li>parsing the JSON to local data models in the rails app</li>
 		<li>pushing the data into a mySQL database locally</li>
 		<li>loading new data when it becomes available</li>
@@ -152,12 +195,10 @@ and, thats pretty much it!
 
 <div class="slide">
 <h1>The Rails Side, part 2</h1>
-<ul>
-	<li>Used Rails built-in methods for creating XML objects: one of the coolest features of Rails, in my opinion.</li>
-</ul>
+<p>Rails has built-in methods for creating XML objects: <em>one of the coolest features of Rails, in my opinion.</em></p>
 <div class="UltraViolet">
 <pre class="twilight"><span class="Comment"><span class="Comment">#</span> a basic controller method</span>
-<span class="Comment"><span class="Comment">#</span></span>
+<span class="Comment"><span class="Comment">#</span> HTTP GET flu_report/1</span>
 <span class="Keyword">def</span> <span class="Entity">show</span>
  <span class="Variable"><span class="Variable">@</span>report</span> <span class="Keyword">=</span> <span class="Support">FluReport</span>.<span class="Entity">find_by_id</span>(params[<span class="Constant"><span class="Constant">:</span>id</span>])
  respond_to <span class="Keyword">do </span>|<span class="Variable">format</span>|
@@ -167,27 +208,165 @@ and, thats pretty much it!
 <span class="Keyword">end</span>
 </pre>
 </div>
-<p>pause for demo</p>
+<p><a href="http://localhost:3000">rails app</a>, <a href="http://localhost:3000/flu_report/2">an example flu report in html</a>, <a href="http://localhost:3000/flu_report/2.xml">an example flu report in xml</a></p>
+<p>as web developers, shouldn&#8217;t we be &#8216;responding to&#8217; what the client is asking for? This is a good model for web application development. We could also: <code>format.pdf</code>, <code>format.amf</code>, <code>format.json</code></p>
 </div>
 
 <div class="slide">
 <h1>The Flex Side</h1>
+<h3>The game plan</h3>
+<ul>
+	<li>Make a call to the web service</li>
+	<li>handle the data returned</li>
+	<li>display the data in a new way</li>
+</ul>
 </div>
 
 <div class="slide">
-<h1>Create a Service Call</h1>
+<h1>Create a New Project</h1>
+<p>Flash Builder Wizard</p>
+<ul>
+	<li>Select server technology</li>
+	<li>flex or air app</li>
+	<li>remote object access, if needed</li>
+</ul>
+<p>Follow Along: <code>git checkout -f 81f734</code></p>
 </div>
 
 <div class="slide">
-<h1>Create a ResultEvent</h1>
+<h1>Create a Service Call &amp; Result</h1>
+<p>The HTTPService Object</p>
+<p>Follow Along: <code>git checkout -f 40323f</code></p>
+<p>New to Flex 4, declarations must go in a Declarations Block</p>
+<div class="UltraViolet">
+<pre class="twilight"><span class="line-numbers">   1 </span> &lt;fx<span class="Keyword">:</span>Declarations&gt;
+<span class="line-numbers">   2 </span> 	&lt;mx<span class="Keyword">:</span>HTTPService 
+<span class="line-numbers">   3 </span> 		id<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>flu_reports<span class="String">&quot;</span></span> 
+<span class="line-numbers">   4 </span> 		resultFormat<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>e4x<span class="String">&quot;</span></span> 
+<span class="line-numbers">   5 </span> 		<span class="SupportFunction">url</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>http://localhost:3000/flu_report.xml<span class="String">&quot;</span></span> 
+<span class="line-numbers">   6 </span> 		<span class="SupportFunction">result</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>handleFluReports(event)<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt;
+<span class="line-numbers">   7 </span> &lt;<span class="Keyword">/</span>fx<span class="Keyword">:</span>Declarations&gt;
+</pre>
+</div>
+</div>
+
+<div class="slide">
+<h1>ResultEvent</h1>
+<p>Result event must go inside a script block. Flex 4, script block now belongs to the fx, not the mx namespace.</p>
+<div class="UltraViolet">
+<pre class="twilight"><span class="line-numbers">   1 </span> &lt;fx<span class="Keyword">:</span>Script&gt;
+<span class="line-numbers">   2 </span> 	&lt;<span class="Keyword">!</span>[CDATA[
+<span class="line-numbers">   3 </span> 		<span class="Keyword">import</span> mx.rpc.events.ResultEvent;
+<span class="line-numbers">   4 </span> 		<span class="Keyword">private</span> <span class="Storage">function</span> <span class="Entity">handleFluReports</span>(<span class="Variable">event:ResultEvent</span>)<span class="Keyword">:</span><span class="SupportFunction">void</span>{}
+<span class="line-numbers">   5 </span> 	]]&gt;
+<span class="line-numbers">   6 </span> &lt;<span class="Keyword">/</span>fx<span class="Keyword">:</span>Script&gt;
+</pre>
+</div>
+</div>
+
+<div class="slide">
+<h1>Initiate the HTTPService Request</h1>
+<p>We can send the request by initiating the service call with the Application&#8217;s <code>creationComplete</code> event, which dispatches once all the components are created.</p>
+<div class="UltraViolet">
+<pre class="twilight"><span class="line-numbers">   1 </span> &lt;s<span class="Keyword">:</span><span class="Support">Application</span> xmlns<span class="Keyword">:</span>fx<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>http://ns.adobe.com/mxml/2009<span class="String">&quot;</span></span> 
+<span class="line-numbers">   2 </span>   xmlns<span class="Keyword">:</span>s<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>library://ns.adobe.com/flex/spark<span class="String">&quot;</span></span> 
+<span class="line-numbers">   3 </span>   xmlns<span class="Keyword">:</span>mx<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>library://ns.adobe.com/flex/halo<span class="String">&quot;</span></span> 
+<span class="line-numbers">   4 </span>   minWidth<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>1024<span class="String">&quot;</span></span> minHeight<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>768<span class="String">&quot;</span></span>
+<span class="line-numbers">   5 </span>   creationComplete<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>{flu_reports.send()}<span class="String">&quot;</span></span>&gt;
+<span class="line-numbers">   6 </span> 
+<span class="line-numbers">   7 </span>   &lt;fx<span class="Keyword">:</span>Script&gt;
+<span class="line-numbers">   8 </span>     &lt;<span class="Keyword">!</span>[CDATA[
+<span class="line-numbers">   9 </span>     <span class="Keyword">import</span> mx.rpc.events.ResultEvent;
+<span class="line-numbers">  10 </span>     <span class="Keyword">import</span> mx.controls.<span class="Support">Alert</span>;
+<span class="line-numbers">  11 </span> 
+<span class="line-numbers">  12 </span>     <span class="Keyword">private</span> <span class="Storage">function</span> <span class="Entity">handleFluReports</span>(<span class="Variable">event:ResultEvent</span>)<span class="Keyword">:</span><span class="SupportFunction">void</span>
+<span class="line-numbers">  13 </span>     {
+<span class="line-numbers">  14 </span>       <span class="Keyword">var</span> xml<span class="Keyword">:</span><span class="Support">XML</span> <span class="Keyword">=</span> <span class="Keyword">new</span> <span class="Support">XML</span>();
+<span class="line-numbers">  15 </span>       xml <span class="Keyword">=</span> <span class="SupportFunction">event</span>.<span class="SupportFunction">result</span> as <span class="Support">XML</span>;
+<span class="line-numbers">  16 </span>       <span class="Support">Alert</span>.<span class="SupportFunction">show</span>(<span class="String"><span class="String">&quot;</span>There are <span class="String">&quot;</span></span> <span class="Keyword">+</span> xml.children().<span class="SupportFunction">length</span>() <span class="Keyword">+</span> <span class="String"><span class="String">&quot;</span> flu reports<span class="String">&quot;</span></span>);
+<span class="line-numbers">  17 </span>     }
+<span class="line-numbers">  18 </span>     ]]&gt;
+<span class="line-numbers">  19 </span>   &lt;<span class="Keyword">/</span>fx<span class="Keyword">:</span>Script&gt;	
+</pre>
+</div>
+<p>Here I did it with inline actionscript, we&#8217;ll fix this later<br />
+<code>creationComplete = "{flu_reports.send()}"</code></p>
 </div>
 
 <div class="slide">
 <h1>Use custom objects</h1>
+<p>You can use the data straight from the ResultEvent, but&#8230;</p>
+<ul>
+	<li>it is probably better to assure that you are parsing the XML into primitive types, and objects.
+	<ul>
+		<li><code>"1" + "1" == "11"</code></li>
+		<li><code>1 + 1 == 2</code></li>
+	</ul></li>
+	<li>you will run into particular trouble sorting dates, for example</li>
+</ul>
+<p>Follow Along: <code>git checkout -f 2c90ad</code></p>
+<p><strong>Take away point:</strong> Flex likes objects</p>
 </div>
 
 <div class="slide">
-<h1>Visualize the Data</h1></div>
+<h1>Revisit the ResultEvent</h1>
+<p>Refactor to a Manager Method,</p>
+<div class="UltraViolet">
+<pre class="twilight"><span class="line-numbers">   1 </span> <span class="Keyword">public</span> <span class="Keyword">var</span> fluReportManager<span class="Keyword">:</span>FluReportManager;
+<span class="line-numbers">   2 </span> 
+<span class="line-numbers">   3 </span> [Bindable]
+<span class="line-numbers">   4 </span> <span class="Keyword">public</span> <span class="Keyword">var</span> arrayCollection<span class="Keyword">:</span>ArrayCollection;
+<span class="line-numbers">   5 </span> 
+<span class="line-numbers">   6 </span> <span class="Comment"><span class="Comment">/*</span>*</span>
+<span class="line-numbers">   7 </span> <span class="Comment"> * handles the return of the data service call</span>
+<span class="line-numbers">   8 </span> <span class="Comment"> <span class="Comment">*/</span></span>
+<span class="line-numbers">   9 </span> <span class="Keyword">private</span> <span class="Storage">function</span> <span class="Entity">handleFluReports</span>(<span class="Variable">event:ResultEvent</span>)<span class="Keyword">:</span><span class="SupportFunction">void</span>
+<span class="line-numbers">  10 </span> {
+<span class="line-numbers">  11 </span> 	fluReportManager <span class="Keyword">=</span> <span class="Keyword">new</span> FluReportManager();
+<span class="line-numbers">  12 </span> 	arrayCollection <span class="Keyword">=</span> fluReportManager.<span class="SupportFunction">parseXML</span>(<span class="SupportFunction">event</span>.<span class="SupportFunction">result</span> as <span class="Support">XML</span>);
+<span class="line-numbers">  13 </span> }
+</pre>
+</div>
+<p>And Make use of data binding: <br />
+<code>[Bindable] arrayCollection:ArrayCollection</code></p>
+</div>
+
+<div class="slide">
+<h1>Visualize the Data</h1>
+<div class="UltraViolet">
+<pre class="twilight"><span class="line-numbers">   1 </span> &lt;s<span class="Keyword">:</span>Panel &gt;
+<span class="line-numbers">   2 </span>   &lt;mx<span class="Keyword">:</span>ColumnChart <span class="SupportFunction">dataProvider</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>{arrayCollection}<span class="String">&quot;</span></span> id<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>columnChart<span class="String">&quot;</span></span> 
+<span class="line-numbers">   3 </span>     <span class="SupportFunction">width</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>800<span class="String">&quot;</span></span> <span class="SupportFunction">height</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>600<span class="String">&quot;</span></span> showDataTips<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>true<span class="String">&quot;</span></span>&gt;
+<span class="line-numbers">   4 </span>     &lt;mx<span class="Keyword">:</span>horizontalAxis&gt;
+<span class="line-numbers">   5 </span>       &lt;mx<span class="Keyword">:</span>CategoryAxis id<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>a1<span class="String">&quot;</span></span> 
+<span class="line-numbers">   6 </span>         categoryField<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>projectDate<span class="String">&quot;</span></span> displayName<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>Date<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt; 
+<span class="line-numbers">   7 </span>       &lt;<span class="Keyword">/</span>mx<span class="Keyword">:</span>horizontalAxis&gt;
+<span class="line-numbers">   8 </span>       &lt;mx<span class="Keyword">:</span>horizontalAxisRenderers&gt;
+<span class="line-numbers">   9 </span>         &lt;mx<span class="Keyword">:</span>AxisRenderer axis<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>{a1}<span class="String">&quot;</span></span> showLabels<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>false<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt;
+<span class="line-numbers">  10 </span>         &lt;<span class="Keyword">/</span>mx<span class="Keyword">:</span>horizontalAxisRenderers&gt;
+<span class="line-numbers">  11 </span>         &lt;mx<span class="Keyword">:</span>series&gt;
+<span class="line-numbers">  12 </span>           &lt;mx<span class="Keyword">:</span>ColumnSet <span class="SupportFunction">type</span><span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>clustered<span class="String">&quot;</span></span>&gt;		
+<span class="line-numbers">  13 </span>             &lt;mx<span class="Keyword">:</span>ColumnSeries yField<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>confirmed<span class="String">&quot;</span></span> displayName<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>Confirmed<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt;
+<span class="line-numbers">  14 </span>             &lt;mx<span class="Keyword">:</span>ColumnSeries yField<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>fatal<span class="String">&quot;</span></span> displayName<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>Fatal<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt;
+<span class="line-numbers">  15 </span>             &lt;mx<span class="Keyword">:</span>ColumnSeries yField<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>suspected<span class="String">&quot;</span></span> displayName<span class="Keyword">=</span><span class="String"><span class="String">&quot;</span>Suspected<span class="String">&quot;</span></span><span class="Keyword">/</span>&gt;
+<span class="line-numbers">  16 </span>           &lt;<span class="Keyword">/</span>mx<span class="Keyword">:</span>ColumnSet&gt;
+<span class="line-numbers">  17 </span>         &lt;<span class="Keyword">/</span>mx<span class="Keyword">:</span>series&gt;
+<span class="line-numbers">  18 </span>   &lt;<span class="Keyword">/</span>mx<span class="Keyword">:</span>ColumnChart&gt;
+<span class="line-numbers">  19 </span> &lt;<span class="Keyword">/</span>s<span class="Keyword">:</span>Panel&gt;
+</pre>
+</div>
+<p>Note that the ColumnChart is bound to the arrayCollection: <code>dataProvider="{arrayCollection}"</code>, changes to the arrayCollection are dispatched to the chart</p>
+</div>
+
+<div class="slide">
+<h1>Resources</h1>
+<p>sample code and slides <a href="http://www.github.com/jedschneider">github.com/jedschneider</a><br />
+twitter <a href="http://www.twitter.com/jedschneider">twitter.com/jedschneider</a><br />
+email <a href="mailto:jed.schneider@gmail.com">jed.schneider@gmail.com</a></p>
+<p>Adobe Open Source <a href="http://opensource.adobe.com">http://opensource.adobe.com</a><br />
+Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a></p>
+<p>HTML/CSS Presentation Generator <a href="http://webby.rubyforge.org">http://webby.rubyforge.org</a></p>
+<p>FluTracker <a href="http://flutracker.rhizalabs.com/">http://flutracker.rhizalabs.com/</a></p></div>
 
 
 </div>

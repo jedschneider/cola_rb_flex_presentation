@@ -1,0 +1,24 @@
+---
+filter: erb
+---
+<% uv :lang => 'actionscript', :line_numbers => true, :theme => 'twilight' do -%>
+<s:Panel >
+  <mx:ColumnChart dataProvider="{arrayCollection}" id="columnChart" 
+    width="800" height="600" showDataTips="true">
+    <mx:horizontalAxis>
+      <mx:CategoryAxis id="a1" 
+        categoryField="projectDate" displayName="Date"/> 
+      </mx:horizontalAxis>
+      <mx:horizontalAxisRenderers>
+        <mx:AxisRenderer axis="{a1}" showLabels="false"/>
+        </mx:horizontalAxisRenderers>
+        <mx:series>
+          <mx:ColumnSet type="clustered">		
+            <mx:ColumnSeries yField="confirmed" displayName="Confirmed"/>
+            <mx:ColumnSeries yField="fatal" displayName="Fatal"/>
+            <mx:ColumnSeries yField="suspected" displayName="Suspected"/>
+          </mx:ColumnSet>
+        </mx:series>
+  </mx:ColumnChart>
+</s:Panel>
+<% end -%>

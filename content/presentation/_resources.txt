@@ -1,11 +1,11 @@
-sample code and slides for this presentation "github.com/jedschneider":http://www.github.com/jedschneider
+sample code and slides "github.com/jedschneider":http://www.github.com/jedschneider
+twitter "twitter.com/jedschneider":http://www.twitter.com/jedschneider
+email "jed.schneider@gmail.com":mailto:jed.schneider@gmail.com
 
-Adobe Open Source Community  "http://opensource.adobe.com":http://opensource.adobe.com
+Adobe Open Source "http://opensource.adobe.com":http://opensource.adobe.com
 Flex and Flash Builder "http://adobe.com/flex":http://adobe.com/flex
 
-Presentation/Slideshow Generator
-Webby "http://webby.rubyforge.org":http://webby.rubyforge.org
+HTML/CSS Presentation Generator "http://webby.rubyforge.org":http://webby.rubyforge.org
 
-RhizaLabs
 FluTracker "http://flutracker.rhizalabs.com/":http://flutracker.rhizalabs.com/
 

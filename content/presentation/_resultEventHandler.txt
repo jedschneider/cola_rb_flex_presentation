@@ -1,0 +1,11 @@
+---
+filter: erb
+---
+<% uv :lang => 'actionscript', :line_numbers => true, :theme => 'twilight' do -%>
+<fx:Script>
+	<![CDATA[
+		import mx.rpc.events.ResultEvent;
+		private function handleFluReports(event:ResultEvent):void{}
+	]]>
+</fx:Script>
+<% end -%>

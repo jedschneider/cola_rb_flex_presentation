@@ -25,6 +25,11 @@ ul, pre {
 margin: 0;
 line-height: 1em;
 }
+
+p, ul{
+font-size:0.75em;
+}
+
 html, body {
 margin: 0;
 padding: 0;
@@ -77,10 +82,10 @@ color: red;
 color: silver;
 }
 .slide pre {
-padding: 0;
+padding: 10px 0px 10px 0px;
 margin: 0.25em 0 0.5em 0.5em;
 color: #533;
-font-size: 50%;
+font-size: 60%;
 }
 .slide pre code {
 display: block;
@@ -129,6 +134,7 @@ padding: 1em 0;
 #footer h1, #footer h2 {
 display: block;
 padding: 0 1em;
+float:left;
 }
 #footer h2 {
 font-style: italic;
@@ -200,7 +206,7 @@ color: #227;
 #currentSlide {
 text-align: center;
 font-size: 0.5em;
-color: #449;
+color: #FFF;
 }
 
 #slide0 {

@@ -2,7 +2,6 @@
 filter: erb
 ---
 <% uv :lang => 'actionscript', :line_numbers => true, :theme => 'twilight' do -%>
-
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 	xmlns:s="library://ns.adobe.com/flex/spark" 
@@ -21,5 +20,4 @@ filter: erb
 	<s:Button label="Hello World" click="{Alert.show('hello world')}" 
 		added="doHelloWorldAdded(event)" styleName="helloWorldBtn"/>
 </s:Application>
-
 <% end -%>
