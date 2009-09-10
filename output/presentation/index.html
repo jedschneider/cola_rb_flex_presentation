@@ -26,7 +26,7 @@
   <div id="currentSlide"><!-- DO NOT EDIT --></div>
   <div id="header"></div>
   <div id="footer">
-    <h2>Copyright &copy; Use it but don't abuse it</h2>
+    <h2>Copyright &copy; Creative Commons</h2>
   </div>
 </div>
 
@@ -62,10 +62,10 @@ Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a>
 <h1>Overview</h1>
 <p>Two Main Topics:</p>
 <ul>
+	<li>intro to Flex</li>
 	<li>data delivery to the app via XML</li>
 	<li><del>overview of component skinning</del></li>
 </ul>
-<p>&#8230;but first we need a short intro to Flex</p>
 </div>
 
 <div class="slide">
@@ -78,7 +78,7 @@ Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a>
 	<li>3D rendering, interaction with built in mic and webcam</li>
 	<li>GIS (Geographic Information Systems) Server integration with ESRI products</li>
 </ul>
-<p>Sites/Apps I&#8217;ve seen lately using Flex: Turbotax, Jing, scraplog.com, Delta airlines, Federal Reserve&#8230; and of course YouTube, Vimeo</p>
+<p>Sites/Apps I&#8217;ve seen lately using Flex: Turbotax, Jing, scraplog.com, Delta Airlines, Federal Reserve&#8230; and of course YouTube, Vimeo</p>
 </div>
 
 <div class="slide">
@@ -160,7 +160,7 @@ Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a>
 	<ul>
 		<li>connect to ColdFusion, ASP.net, J2EE, PHP, application servers</li>
 		<li>connect to HTTP API&#8217;s and RESTful resources</li>
-		<li>serialize data obejcts with AMF =&gt; RubyAMF, PHPAMF</li>
+		<li>serialize data objects with AMF =&gt; RubyAMF, PHPAMF</li>
 		<li>access databases directly; Flash Builder wizard creates CRUD tasks for you</li>
 	</ul></li>
 	<li>External libraries provide a range of other options, like consuming serialized JSON</li>
@@ -359,7 +359,36 @@ Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a>
 </div>
 
 <div class="slide">
+<h1>Visualize, Again.</h1>
+<p>Lets do something cool when we click on a report in the column chart.</p>
+<div class="UltraViolet">
+<pre class="twilight"><span class="line-numbers">   1 </span> protected <span class="Storage">function</span> <span class="Entity">clickHandler</span>(<span class="Variable">event:ChartItemEvent</span>)<span class="Keyword">:</span><span class="SupportFunction">void</span>
+<span class="line-numbers">   2 </span> {
+<span class="line-numbers">   3 </span> 	<span class="Keyword">var</span> report<span class="Keyword">:</span>FluReport <span class="Keyword">=</span> <span class="SupportFunction">event</span>.hitData.item as FluReport;
+<span class="line-numbers">   4 </span> 	<span class="Keyword">var</span> previousReport<span class="Keyword">:</span>FluReport <span class="Keyword">=</span> fluReportManager.findReportById( report.id <span class="Keyword">-</span> <span class="Constant">1</span> );
+<span class="line-numbers">   5 </span> 	
+<span class="line-numbers">   6 </span> 	<span class="Comment"><span class="Comment">//</span>newReport defines a difference betwteen the selected report and the one before it</span>
+<span class="line-numbers">   7 </span> 	<span class="Keyword">var</span> newReport<span class="Keyword">:</span>FluReport <span class="Keyword">=</span> fluReportManager.diffFluReports(report, previousReport);
+<span class="line-numbers">   8 </span> 	<span class="Keyword">var</span> totalCases<span class="Keyword">:</span><span class="Storage">Number</span> <span class="Keyword">=</span> newReport.confirmed <span class="Keyword">+</span> newReport.suspected <span class="Keyword">+</span> newReport.fatal;
+<span class="line-numbers">   9 </span> 	
+<span class="line-numbers">  10 </span> 	fluCases <span class="Keyword">=</span> <span class="Keyword">new</span> ArrayCollection();
+<span class="line-numbers">  11 </span> 	fluCases.<span class="SupportFunction">addItem</span>( {<span class="SupportFunction">type</span><span class="Keyword">:</span><span class="String"><span class="String">&quot;</span>confirmed<span class="String">&quot;</span></span>, cases<span class="Keyword">:</span> newReport.confirmed } );
+<span class="line-numbers">  12 </span> 	fluCases.<span class="SupportFunction">addItem</span>( {<span class="SupportFunction">type</span><span class="Keyword">:</span> <span class="String"><span class="String">&quot;</span>suspected<span class="String">&quot;</span></span>, cases<span class="Keyword">:</span> newReport.suspected} );
+<span class="line-numbers">  13 </span> 	fluCases.<span class="SupportFunction">addItem</span>( {<span class="SupportFunction">type</span><span class="Keyword">:</span> <span class="String"><span class="String">&quot;</span>fatal<span class="String">&quot;</span></span>, cases<span class="Keyword">:</span> newReport.fatal } );
+<span class="line-numbers">  14 </span> 	
+<span class="line-numbers">  15 </span> 	textArea.<span class="SupportFunction">text</span> <span class="Keyword">=</span> <span class="String"><span class="String">&quot;</span>Previous Report: <span class="String">&quot;</span></span><span class="Keyword">+</span> previousReport.projectDate.toLocaleDateString() 
+<span class="line-numbers">  16 </span> 		<span class="Keyword">+</span> <span class="String"><span class="String">&quot;</span><span class="StringConstant">\n</span>This Report: <span class="String">&quot;</span></span> <span class="Keyword">+</span> report.projectDate.toLocaleDateString()				
+<span class="line-numbers">  17 </span> 		<span class="Keyword">+</span> <span class="String"><span class="String">&quot;</span><span class="StringConstant">\n</span>Total New Cases: <span class="String">&quot;</span></span> <span class="Keyword">+</span> totalCases
+<span class="line-numbers">  18 </span> 		<span class="Keyword">+</span> <span class="String"><span class="String">&quot;</span><span class="StringConstant">\n</span>New confirmed: <span class="String">&quot;</span></span> <span class="Keyword">+</span> newReport.confirmed <span class="Keyword">+</span> <span class="String"><span class="String">&quot;</span> <span class="String">&quot;</span></span> 
+<span class="line-numbers">  19 </span> 		<span class="Keyword">+</span> <span class="String"><span class="String">&quot;</span><span class="StringConstant">\n</span>New suspected: <span class="String">&quot;</span></span> <span class="Keyword">+</span> newReport.suspected <span class="Keyword">+</span> <span class="String"><span class="String">&quot;</span><span class="StringConstant">\n</span>New fatal: <span class="String">&quot;</span></span> <span class="Keyword">+</span> newReport.fatal;
+<span class="line-numbers">  20 </span> }
+</pre>
+</div>
+</div>
+
+<div class="slide">
 <h1>Resources</h1>
+<p>Follow Along: <code>git checkout -f b88094</code></p>
 <p>sample code and slides <a href="http://www.github.com/jedschneider">github.com/jedschneider</a><br />
 twitter <a href="http://www.twitter.com/jedschneider">twitter.com/jedschneider</a><br />
 email <a href="mailto:jed.schneider@gmail.com">jed.schneider@gmail.com</a></p>

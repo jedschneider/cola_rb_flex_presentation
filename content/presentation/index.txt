@@ -3,7 +3,7 @@ title:      Introduction to the Adobe Flex 4.0 Framework
 created_at: 2008-05-18 22:10:21.995012 -06:00
 author:     Jed Schneider
 company:    Red Bone Code Hounds
-copyright:  Use it but don't abuse it
+copyright:  Creative Commons
 filter:
   - erb
   - textile
@@ -33,10 +33,9 @@ h1. Overview
 
 Two Main Topics:
 
+* intro to Flex
 * data delivery to the app via XML
 * -overview of component skinning-
-
-...but first we need a short intro to Flex
 
 h1. Why Flex
 
@@ -48,7 +47,7 @@ Not a substitution for HTML and javascript, but to augment it.
 * 3D rendering, interaction with built in mic and webcam
 * GIS (Geographic Information Systems) Server integration with ESRI products
 
-Sites/Apps I've seen lately using Flex: Turbotax, Jing, scraplog.com, Delta airlines, Federal Reserve... and of course YouTube, Vimeo
+Sites/Apps I've seen lately using Flex: Turbotax, Jing, scraplog.com, Delta Airlines, Federal Reserve... and of course YouTube, Vimeo
 
 h1. More Reasons?...
 
@@ -196,7 +195,15 @@ h1. Visualize the Data
 
 Note that the ColumnChart is bound to the arrayCollection: @dataProvider="{arrayCollection}"@, changes to the arrayCollection are dispatched to the chart
 
+h1. Visualize, Again.
+
+Lets do something cool when we click on a report in the column chart. 
+
+<%= render :partial=>'clickItemHandler', :guard=>true %>
+
 h1. Resources
+
+Follow Along: @git checkout -f b88094@
 
 <%= render :partial => 'resources' %>
 

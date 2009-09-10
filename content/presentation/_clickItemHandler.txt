@@ -1,0 +1,25 @@
+---
+filter: erb
+---
+<% uv :lang => 'actionscript', :line_numbers => true, :theme => 'twilight' do -%>
+protected function clickHandler(event:ChartItemEvent):void
+{
+	var report:FluReport = event.hitData.item as FluReport;
+	var previousReport:FluReport = fluReportManager.findReportById( report.id - 1 );
+	
+	//newReport defines a difference betwteen the selected report and the one before it
+	var newReport:FluReport = fluReportManager.diffFluReports(report, previousReport);
+	var totalCases:Number = newReport.confirmed + newReport.suspected + newReport.fatal;
+	
+	fluCases = new ArrayCollection();
+	fluCases.addItem( {type:"confirmed", cases: newReport.confirmed } );
+	fluCases.addItem( {type: "suspected", cases: newReport.suspected} );
+	fluCases.addItem( {type: "fatal", cases: newReport.fatal } );
+	
+	textArea.text = "Previous Report: "+ previousReport.projectDate.toLocaleDateString() 
+		+ "\nThis Report: " + report.projectDate.toLocaleDateString()				
+		+ "\nTotal New Cases: " + totalCases
+		+ "\nNew confirmed: " + newReport.confirmed + " " 
+		+ "\nNew suspected: " + newReport.suspected + "\nNew fatal: " + newReport.fatal;
+}
+<% end -%>
