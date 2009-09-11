@@ -52,6 +52,8 @@ Sites/Apps I've seen lately using Flex: Turbotax, Jing, scraplog.com, Delta Airl
 h1. More Reasons?...
 
 * robust object oriented language
+* stateless
+* defer/cache/process data on the client
 * consistent deployment
 * Desktop Runtime (AIR)
 * shake hands with existing (aka, _legacy_) backend solutions: _'hi Java, I'm Flex'_
@@ -199,11 +201,11 @@ h1. Visualize, Again.
 
 Lets do something cool when we click on a report in the column chart. 
 
+Follow Along: @git checkout -f b88094@
+
 <%= render :partial=>'clickItemHandler', :guard=>true %>
 
 h1. Resources
-
-Follow Along: @git checkout -f b88094@
 
 <%= render :partial => 'resources' %>
 

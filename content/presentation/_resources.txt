@@ -2,6 +2,7 @@ sample code and slides "github.com/jedschneider":http://www.github.com/jedschnei
 twitter "twitter.com/jedschneider":http://www.twitter.com/jedschneider
 email "jed.schneider@gmail.com":mailto:jed.schneider@gmail.com
 
+Tour de Flex "http://www.adobe.com/devnet/flex/tourdeflex/":http://www.adobe.com/devnet/flex/tourdeflex/
 Adobe Open Source "http://opensource.adobe.com":http://opensource.adobe.com
 Flex and Flash Builder "http://adobe.com/flex":http://adobe.com/flex
 
