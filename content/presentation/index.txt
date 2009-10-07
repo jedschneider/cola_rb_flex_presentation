@@ -85,8 +85,6 @@ There are tools that are familiar to Rails developers
 * RestfulX (Peter Armstrong) "Flexible Rails":http://www.amazon.com/Flexible-Rails-Flex-Peter-Armstrong/dp/1933988509/ref=sr_1_2?ie=UTF8&s=books&qid=1254922044&sr=8-2
 * RubyAMF (Tony Hillerson, EffectiveUI, now BrightKite) "Flex on Rails":http://www.amazon.com/Flex-Rails-Building-Internet-Applications/dp/0321543378/ref=sr_1_1?ie=UTF8&s=books&qid=1254921992&sr=8-1
 
-
-
 h1. From Rails to Flex
 
 * by hand (write the rails model, write the flex model, connect web service)
@@ -107,6 +105,65 @@ AMF is a serialization protocol created by Adobe.
 "The Wikipedia Article":http://en.wikipedia.org/wiki/Action_Message_Format
 "T. Hillerson's github":http://github.com/thillerson/rubyamf
 
+h1. Using RestfulX
+
+p. setting up a restfulX environment
+
+@% sudo gem install restfulx@
+
+p. and then create a restfulX app
+
+@% rails -d mysql blog@
+@% cd blog@
+
+p. and create the appropriate environment
+
+@% script/generate rx_config@
+
+p. now there is a file structure for both rails and flex
+
+h1. Using RestfulX (model creation)
+
+p. now build a model to define the blog for both the flex and rails code
+
+@% mate db/model.yml@
+
+<%= render :partial=> 'model_create', :guard => true %>
+
+h1. Using RestfulX (scaffolding)
+
+p. and then use the scaffold to build the models
+
+@script/generate rx_yaml_scaffold@
+
+p. setup your @enviroment.rb@ file
+
+@config.gem 'restfulX'@
+@config.gem 'paperclip'@
+
+p. and the rake tasks to migrate and compile
+
+@rake db:refresh@
+@rake rx:flex:build@
+
+h1. Using RestfulX (launching the server)
+
+now launch the server like normal
+@script/server@
+
+h1. Building an AIR App with SQLite
+
+reset the config files
+@script/generate rx_config -a@
+@rake rx:air:build@
+@rake rax:air:run@
+
+h1. Taking it Further
+
+now, lets do something javascript has a hard time doing:
+
+* add a webcam
+* capture an image and save it as an avatar to the database with paperclip
 
 h1. Resources
 

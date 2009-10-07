@@ -8,5 +8,4 @@ Flex and Flash Builder "http://adobe.com/flex":http://adobe.com/flex
 
 HTML/CSS Presentation Generator "http://webby.rubyforge.org":http://webby.rubyforge.org
 
-FluTracker "http://flutracker.rhizalabs.com/":http://flutracker.rhizalabs.com/
 

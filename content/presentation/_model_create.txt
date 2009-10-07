@@ -1,0 +1,15 @@
+---
+filter: erb
+---
+<% uv :lang => 'yaml', :line_numbers => false, :theme => 'twilight' do -%>
+post:
+ - title: string
+ - article: text
+ - has_many: [comments]
+
+comment:
+ - email_address: string
+ - comment_text_: text
+ - attachment_field: [avatar]
+ - belongs_to: [post]
+<% end -%>

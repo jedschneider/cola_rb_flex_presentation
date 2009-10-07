@@ -61,7 +61,6 @@ email <a href="mailto:jed.schneider@gmail.com">jed.schneider@gmail.com</a></p>
 Adobe Open Source <a href="http://opensource.adobe.com">http://opensource.adobe.com</a><br />
 Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a></p>
 <p>HTML/CSS Presentation Generator <a href="http://webby.rubyforge.org">http://webby.rubyforge.org</a></p>
-<p>FluTracker <a href="http://flutracker.rhizalabs.com/">http://flutracker.rhizalabs.com/</a></p>
 </div>
 
 <div class="slide">
@@ -164,6 +163,72 @@ Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a>
 </div>
 
 <div class="slide">
+<h1>Using RestfulX</h1>
+<p>setting up a restfulX environment</p>
+<p><code>% sudo gem install restfulx</code></p>
+<p>and then create a restfulX app</p>
+<p><code>% rails -d mysql blog</code><br />
+<code>% cd blog</code></p>
+<p>and create the appropriate environment</p>
+<p><code>% script/generate rx_config</code></p>
+<p>now there is a file structure for both rails and flex</p>
+</div>
+
+<div class="slide">
+<h1>Using RestfulX (model creation)</h1>
+<p>now build a model to define the blog for both the flex and rails code</p>
+<p><code>% mate db/model.yml</code></p>
+<div class="UltraViolet">
+<pre class="twilight"><span class="MetaTagAll"><span class="MetaTagInline">post</span><span class="MetaTagAll">:</span></span>
+ <span class="String"><span class="String">- </span><span class="MetaTagInline">title<span class="MetaTagInline">:</span></span> <span class="String">string</span></span>
+ <span class="String"><span class="String">- </span><span class="MetaTagInline">article<span class="MetaTagInline">:</span></span> <span class="String">text</span></span>
+ <span class="String"><span class="String">-</span> <span class="String">has_many: [comments]</span></span>
+
+<span class="MetaTagAll"><span class="MetaTagInline">comment</span><span class="MetaTagAll">:</span></span>
+ <span class="String"><span class="String">- </span><span class="MetaTagInline">email_address<span class="MetaTagInline">:</span></span> <span class="String">string</span></span>
+ <span class="String"><span class="String">- </span><span class="MetaTagInline">comment_text_<span class="MetaTagInline">:</span></span> <span class="String">text</span></span>
+ <span class="String"><span class="String">-</span> <span class="String">attachment_field: [avatar]</span></span>
+ <span class="String"><span class="String">-</span> <span class="String">belongs_to: [post]</span></span>
+</pre>
+</div>
+</div>
+
+<div class="slide">
+<h1>Using RestfulX (scaffolding)</h1>
+<p>and then use the scaffold to build the models</p>
+<p><code>script/generate rx_yaml_scaffold</code></p>
+<p>setup your <code>enviroment.rb</code> file</p>
+<p><code>config.gem 'restfulX'</code><br />
+<code>config.gem 'paperclip'</code></p>
+<p>and the rake tasks to migrate and compile</p>
+<p><code>rake db:refresh</code><br />
+<code>rake rx:flex:build</code></p>
+</div>
+
+<div class="slide">
+<h1>Using RestfulX (launching the server)</h1>
+<p>now launch the server like normal<br />
+<code>script/server</code></p>
+</div>
+
+<div class="slide">
+<h1>Building an AIR App with SQLite</h1>
+<p>reset the config files<br />
+<code>script/generate rx_config -a</code><br />
+<code>rake rx:air:build</code><br />
+<code>rake rax:air:run</code></p>
+</div>
+
+<div class="slide">
+<h1>Taking it Further</h1>
+<p>now, lets do something javascript has a hard time doing:</p>
+<ul>
+	<li>add a webcam</li>
+	<li>capture an image and save it as an avatar to the database with paperclip</li>
+</ul>
+</div>
+
+<div class="slide">
 <h1>Resources</h1>
 <p>sample code and slides <a href="http://www.github.com/jedschneider">github.com/jedschneider</a><br />
 twitter <a href="http://www.twitter.com/jedschneider">twitter.com/jedschneider</a><br />
@@ -171,8 +236,7 @@ email <a href="mailto:jed.schneider@gmail.com">jed.schneider@gmail.com</a></p>
 <p>Tour de Flex <a href="http://www.adobe.com/devnet/flex/tourdeflex/">http://www.adobe.com/devnet/flex/tourdeflex/</a><br />
 Adobe Open Source <a href="http://opensource.adobe.com">http://opensource.adobe.com</a><br />
 Flex and Flash Builder <a href="http://adobe.com/flex">http://adobe.com/flex</a></p>
-<p>HTML/CSS Presentation Generator <a href="http://webby.rubyforge.org">http://webby.rubyforge.org</a></p>
-<p>FluTracker <a href="http://flutracker.rhizalabs.com/">http://flutracker.rhizalabs.com/</a></p></div>
+<p>HTML/CSS Presentation Generator <a href="http://webby.rubyforge.org">http://webby.rubyforge.org</a></p></div>
 
 
 </div>
