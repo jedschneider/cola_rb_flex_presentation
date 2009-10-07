@@ -11,11 +11,12 @@ filter:
 layout: presentation
 ---
 
-h1. Columbia Adobe Users Group
+h1. Cola.rb 
 
-h2. Introduction to Flex 4.0
+h2. Flex and Rails
 
-<img src="images/flex4.png"  width="260" height="260" alt="Flex4">
+table(#logos).
+|<img src="images/flex4.png"  width="260" height="260" alt="Flex4" class="logo">|<img src="images/rails.png" width="260" height="260" alt="Rails" class="logo">|
 
 h1. About Me
 
@@ -33,31 +34,15 @@ h1. Overview
 
 Two Main Topics:
 
-* intro to Flex
-* data delivery to the app via XML
-* -overview of component skinning-
+* 4 slide intro to Flex
+* survey of tools that bridge the divide
+* example using RestfulX (one of the tools)
 
 h1. Why Flex
 
 Not a substitution for HTML and javascript, but to augment it.
 
-* A data visualization tool
-* An application like interface
-* tools for multimedia (video streaming, image manipulation)
-* 3D rendering, interaction with built in mic and webcam
-* GIS (Geographic Information Systems) Server integration with ESRI products
-
-Sites/Apps I've seen lately using Flex: Turbotax, Jing, scraplog.com, Delta Airlines, Federal Reserve... and of course YouTube, Vimeo
-
-h1. More Reasons?...
-
-* robust object oriented language
-* stateless
-* defer/cache/process data on the client
-* consistent deployment
-* Desktop Runtime (AIR)
-* shake hands with existing (aka, _legacy_) backend solutions: _'hi Java, I'm Flex'_
-* integrated testing @Flex:Unit@ framework (in Flash Builder)
+A data visualization tool, An application like interface, tools for multimedia (video streaming, image manipulation), 3D rendering, interaction with built in mic and webcam, GIS (Geographic Information Systems) Server integration with ESRI products, stateless, defer/cache/process data on the client, consistent deployment, Desktop Runtime (AIR), shake hands with existing (aka, _legacy_) backend solutions, integrated testing Flex:Unit framework (in Flash Builder)
 
 *Take home:* when use cases call for data visualizations, or legacy systems need a new look, Flex might be a good solution.
 
@@ -80,13 +65,7 @@ and, thats pretty much it!
 * added => can refer to a function elsewhere in the file or application
 * styleName => can use CSS to markup components
 
-h1. Example Application
-
-But really, here's all the code we'd need to compile that snippet
-
-<%= render :partial => 'helloWorldApp', :guard => true %>
-
-h1. Bringing Data Into Flex
+h1. But, Flash Content is fixed in a SWF!
 
 h3. Complaint: Flash content is not dynamic (in regards to content)
 
@@ -98,112 +77,36 @@ h3. Complaint: Flash content is not dynamic (in regards to content)
 ** access databases directly; Flash Builder wizard creates CRUD tasks for you
 * External libraries provide a range of other options, like consuming serialized JSON
 
-h1. The Swine Flu Tracker Application
+h1. A familiar tool set
 
-_Rhizalabs_ has created a google maps interface for tracking the "swine flu":http://flutracker.rhizalabs.com/
+There are tools that are familiar to Rails developers
 
-* The data is under "Creative Commons license":http://creativecommons.org/licenses/by-nc-sa/3.0/us/
-* *"The map is compiled using data from official sources, news reports and user-contributions and updated multiple times per day."* (but I couldn't find the references to official sources)
-* no publicly accessible API that I could find, nor was there another API from the WHO or CDC or other such source
-* I wanted to look at the data differently, so I clobbered together my own crude API
+* "Cucumber":http://wiki.github.com/aslakhellesoy/cucumber/funfx-and-flex
+* RestfulX (Peter Armstrong) "Flexible Rails":http://www.amazon.com/Flexible-Rails-Flex-Peter-Armstrong/dp/1933988509/ref=sr_1_2?ie=UTF8&s=books&qid=1254922044&sr=8-2
+* RubyAMF (Tony Hillerson, EffectiveUI, now BrightKite) "Flex on Rails":http://www.amazon.com/Flex-Rails-Building-Internet-Applications/dp/0321543378/ref=sr_1_1?ie=UTF8&s=books&qid=1254921992&sr=8-1
 
-h1. The Rails Side, part 1
 
-* I created a rails application that basically scrapes the JSON data used for the FluTracker map
-* Briefly, it required: 
-** finding, by trial, the folder on their server containing the data
-** using Hpricot (an HTML parser in Ruby) to parse the html and get only the relevant JSON files
-** parsing the JSON to local data models in the rails app
-** pushing the data into a mySQL database locally
-** loading new data when it becomes available
 
-h1. The Rails Side, part 2
+h1. From Rails to Flex
 
-Rails has built-in methods for creating XML objects: _one of the coolest features of Rails, in my opinion._ 
+* by hand (write the rails model, write the flex model, connect web service)
+* serialize with RubyAMF
+* use RestfulX (hooks for CouchDB, Merb, And Google App Engine Also)
 
-<%= render :partial => 'respond-to', :guard => true %>
-"rails app":http://localhost:3000, "an example flu report in html":http://localhost:3000/flu_report/2, "an example flu report in xml":http://localhost:3000/flu_report/2.xml
+h1. By Hand: The Swine Flu Tracker Application
 
-as web developers, shouldn't we be 'responding to' what the client is asking for? This is a good model for web application development. We could also: @format.pdf@, @format.amf@, @format.json@
+Presented at the Columbia Adobe User Group in September, showing how to write a Flex interface by hand using the HTTPService class. 
 
-h1. The Flex Side
+"A longer introduction here":http://www.vimeo.com/groups/caug/videos/6806641
+"flex code is here":http://www.github.com/jedschneider/caug_flex_app
+"rails code is here":http://www.github.com/jedschneider/caug_rails_app
 
-h3. The game plan
+h1. Using RubyAMF
 
-* Make a call to the web service
-* handle the data returned
-* display the data in a new way
+AMF is a serialization protocol created by Adobe.
+"The Wikipedia Article":http://en.wikipedia.org/wiki/Action_Message_Format
+"T. Hillerson's github":http://github.com/thillerson/rubyamf
 
-h1. Create a New Project
-
-Flash Builder Wizard
-
-* Select server technology
-* flex or air app
-* remote object access, if needed
-
-Follow Along: @git checkout -f 81f734@
-
-h1. Create a Service Call & Result
-
-The HTTPService Object
-
-Follow Along: @git checkout -f 40323f@
-
-New to Flex 4, declarations must go in a Declarations Block
-
-<%= render :partial => 'httpService', :guard => true %>
-
-h1. ResultEvent
-
-Result event must go inside a script block. Flex 4, script block now belongs to the fx, not the mx namespace.
-
-<%= render :partial => 'resultEventHandler', :guard => true %>
-
-h1. Initiate the HTTPService Request
-
-We can send the request by initiating the service call with the Application's @creationComplete@ event, which dispatches once all the components are created.
-
-<%= render :partial => 'sendServiceCall', :guard => true %>
-
-Here I did it with inline actionscript, we'll fix this later
-@creationComplete = "{flu_reports.send()}"@
-
-h1. Use custom objects
-
-You can use the data straight from the ResultEvent, but...
-
-* it is probably better to assure that you are parsing the XML into primitive types, and objects. 
-** @"1" + "1" == "11"@
-** @1 + 1 == 2@
-* you will run into particular trouble sorting dates, for example
-
-Follow Along: @git checkout -f 2c90ad@
-
-*Take away point:* Flex likes objects
-
-h1. Revisit the ResultEvent
-
-Refactor to a Manager Method,
-
-<%= render :partial => 'resultEventRedux', :guard => true %>
-
-And Make use of data binding: 
-@[Bindable] arrayCollection:ArrayCollection@
-
-h1. Visualize the Data
-
-<%= render :partial=> 'columnChart', :guard => true %>
-
-Note that the ColumnChart is bound to the arrayCollection: @dataProvider="{arrayCollection}"@, changes to the arrayCollection are dispatched to the chart
-
-h1. Visualize, Again.
-
-Lets do something cool when we click on a report in the column chart. 
-
-Follow Along: @git checkout -f b88094@
-
-<%= render :partial=>'clickItemHandler', :guard=>true %>
 
 h1. Resources
 

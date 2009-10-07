@@ -112,13 +112,19 @@ display: block;
 margin: 0 auto;
 }
 
+#logos{
+text-align: center;
+margin-right:auto;
+margin-left:auto;
+}
+
 div#header, div#footer {
 background: #005;
 color: #AAB;
 font-family: Verdana, Helvetica, sans-serif;
 }
 div#header {
-background: #005 url('caugshiny.gif') 5px 5px no-repeat;
+background: #005 url('images/ruby.png') 5px 5px no-repeat;
 line-height: 1px;
 
 }
